@@ -25,9 +25,15 @@ class SeatReservation {
     }
     // ===========End of check if queue is empty==================
 
+    // ===========Check if queue is full==========================
+    public boolean isFull() {
+        return capacity == rear;
+    }
+    // ===========End of check if queue is full===================
+
     // ===========Enqueue reservation============================
     public void enqueue(Reservation reservation) {
-        if (capacity == rear) {
+        if (isFull()) {
             System.out.println("=====================================");
             System.out.println("Queue is full. No more reservation can be made");
             System.out.println("=====================================");
@@ -40,7 +46,7 @@ class SeatReservation {
 
     // ===========Dequeue reservation=============================
     public void dequeue() {
-        if (front == rear) {
+        if (isEmpty() == true) {
             System.out.println("=====================================");
             System.out.println("Queue is empty. No reservation found");
             System.out.println("=====================================");
@@ -58,7 +64,7 @@ class SeatReservation {
     // ===========Display all reservations=========================
     public void display() {
         int i;
-        if (front == rear) {
+        if (isEmpty() == true) {
             System.out.println("=====================================");
             System.out.println("Queue is Empty. No reservation found");
             System.out.println("=====================================");
@@ -76,7 +82,7 @@ class SeatReservation {
 
     // ===========Peek reservation=================================
     public Reservation peek() {
-        if (front == rear) {
+        if (isEmpty() == true) {
             System.out.println("=====================================");
             System.out.println("Queue is Empty. No reservation found");
             System.out.println("=====================================");
@@ -88,7 +94,7 @@ class SeatReservation {
 
     // ===========Change seat number==============================
     public void changeSeat() {
-        if (front == rear) {
+        if (isEmpty() == true) {
             System.out.println("=====================================");
             System.out.println("Queue is Empty. No reservation found");
             System.out.println("=====================================");
