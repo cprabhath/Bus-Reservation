@@ -54,7 +54,7 @@ class SeatReservation {
         } else {
             queue.remove(front);
             System.out.println("=====================================");
-            System.out.println("Reservation removed successfully");
+            System.out.println("Reservation cancelled successfully. Seat is now available for new reservation");
             System.out.println("=====================================");
             rear--;
         }
@@ -63,7 +63,6 @@ class SeatReservation {
 
     // ===========Display all reservations=========================
     public void display() {
-        int i;
         if (isEmpty() == true) {
             System.out.println("=====================================");
             System.out.println("Queue is Empty. No reservation found");
@@ -71,12 +70,11 @@ class SeatReservation {
             return;
         }
         System.out.println("=============All Reservations=============");
-        for (i = front; i < rear; i++) {
+        for (int i = front; i < rear; i++) {
             System.out.println("=====================================");
             System.out.println(queue.get(i));
             System.out.println("=====================================");
         }
-        return;
     }
     // ===========End of display all reservations==================
 
@@ -94,12 +92,16 @@ class SeatReservation {
 
     // ===========Change seat number==============================
     public void changeSeat() {
+        // ===========Check if queue is empty=========================
         if (isEmpty() == true) {
             System.out.println("=====================================");
             System.out.println("Queue is Empty. No reservation found");
             System.out.println("=====================================");
             return;
         }
+        // ===========End of check if queue is empty==================
+
+        // ===========if not Change seat number==============================
         System.out.println("================Seat Change================");
         System.out.println("Enter your email");
         String email = Main.sc.next();
@@ -118,6 +120,7 @@ class SeatReservation {
                 System.out.println("=====================================");
             }
         }
+        // ===========End of change seat number=======================
     }
     // ===========End of change seat number=======================
 }

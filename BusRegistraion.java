@@ -63,20 +63,18 @@ class BusRegistraion {
 
             // ===========Return to main menu==================
             System.out.println("=======Bus Registered Successfully==========\n");
-            System.out.println("Enter 1 to Register another Bus");
-            System.out.println("Enter 2 to return to Main Menu\n");
+            System.out.println("Return to Main Menu? (Y/N)");
             while (true) {
-                int choice = sc.nextInt();
-                switch (choice) {
-                    case 1:
-                        register();
-                        break;
-                    case 2:
-                        Main.main(null);
-                        break;
-
-                    default:
-                        break;
+                String choice1 = sc.next();
+                if (choice1.equalsIgnoreCase("Y")) {
+                    Main.main(null);
+                } else if (choice1.equalsIgnoreCase("N")) {
+                    System.out.println("=============Thank you for using Bus Reservation System=============");
+                    System.exit(0);
+                } else {
+                    System.out.println("==============================================");
+                    System.out.println("Invalid Input! Please try again.");
+                    System.out.println("==============================================\n");
                 }
             }
             // ===========End of return to main menu==================
@@ -95,7 +93,7 @@ class BusRegistraion {
     // ================Show all Buses========================
     public void showBuses() {
         try {
-            // ===========Show all buses==================
+            // ===========Show all buses=====================
             System.out.println("=============Buses=============");
             if (buses.size() > 0) {
                 for (Bus bus : buses) {
@@ -108,29 +106,41 @@ class BusRegistraion {
                     System.out.println("Fare: " + bus.getFare());
                     System.out.println("==================================");
                 }
+                // ===========End of show all buses==================
+
+                // ===========No bus registered yet==================
             } else {
                 System.out.println("==============================================");
                 System.out.println("No bus registered yet");
                 System.out.println("==============================================");
             }
-            System.out.println("Enter 1 to return to Main Menu");
-            while (true) {
-                int choice = sc.nextInt();
-                switch (choice) {
-                    case 1:
-                        Main.main(null);
-                        break;
+            // ===========End of no bus registered yet============
 
-                    default:
-                        break;
+            // ===========Return to main menu==================
+            System.out.println("Do you want to return to Main Menu? (Y/N)");
+            while (true) {
+                String choice1 = sc.next();
+                if (choice1.equalsIgnoreCase("Y")) {
+                    Main.main(null);
+                } else if (choice1.equalsIgnoreCase("N")) {
+                    System.out.println("=============Thank you for using Bus Reservation System=============");
+                    System.exit(0);
+                } else {
+                    System.out.println("==============================================");
+                    System.out.println("Invalid Input! Please try again.");
+                    System.out.println("==============================================\n");
                 }
             }
+            // ===========End of return to main menu==================
+
+            // ===========Catch invalid input==================
         } catch (Exception e) {
             System.out.println("===============================");
             System.out.println("Invalid Input");
             System.out.println(e);
             System.out.println("===============================");
         }
+        // ===========End of catch invalid input==================
     }
     // ================End of Show all Buses=================
 
@@ -152,36 +162,11 @@ class BusRegistraion {
                         System.out.println("Starting Time: " + bus.getStartingTime());
                         System.out.println("Fare: " + bus.getFare());
                         System.out.println("==================================");
-                        System.out.println("Enter 1 to return to Main Menu");
-                        while (true) {
-                            int choice = sc.nextInt();
-                            switch (choice) {
-                                case 1:
-                                    Main.main(null);
-                                    break;
-
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                }
-                // ===========End of search bus==================
-
-                // ===========Bus not found==================
-                System.out.println("==============================================");
-                System.out.println("Bus not found");
-                System.out.println("==============================================\n");
-                System.out.println("Enter 1 to return to Main Menu");
-                while (true) {
-                    int choice = sc.nextInt();
-                    switch (choice) {
-                        case 1:
-                            Main.main(null);
-                            break;
-
-                        default:
-                            break;
+                        return;
+                    } else {
+                        System.out.println("==============================================");
+                        System.out.println("Bus not found");
+                        System.out.println("==============================================");
                     }
                 }
             } else {
@@ -189,25 +174,35 @@ class BusRegistraion {
                 System.out.println("==============================================");
                 System.out.println("No bus registered yet");
                 System.out.println("==============================================\n");
-                System.out.println("Enter 1 to return to Main Menu");
-                while (true) {
-                    int choice = sc.nextInt();
-                    switch (choice) {
-                        case 1:
-                            Main.main(null);
-                            break;
+                // ===========End of no bus registered yet==================
+            }
 
-                        default:
-                            break;
-                    }
+            System.out.println("Do you want to return to Main Menu? (Y/N)");
+
+            // ===========Return to main menu==================
+            while (true) {
+                String choice1 = sc.next();
+                if (choice1.equalsIgnoreCase("Y")) {
+                    Main.main(null);
+                } else if (choice1.equalsIgnoreCase("N")) {
+                    System.out.println("=============Thank you for using Bus Reservation System=============");
+                    System.exit(0);
+                } else {
+                    System.out.println("==============================================");
+                    System.out.println("Invalid Input! Please try again.");
+                    System.out.println("==============================================\n");
                 }
             }
+            // ===========End of return to main menu==================
+
+            // ===========Catch invalid input==================
         } catch (Exception e) {
             System.out.println("===============================");
             System.out.println("Invalid Input");
             System.out.println(e);
             System.out.println("===============================");
         }
+        // ===========End of catch invalid input==================
     }
     // ================End of Search Bus====================
 }

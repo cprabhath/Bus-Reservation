@@ -28,27 +28,21 @@ class Main {
             System.out.println("Enter 8 to Change Seat");
             System.out.println("Enter 9 to Cancel Reservation");
             System.out.println("Enter 10 to Exit\n");
-
             System.out.print("Enter your choice : ");
             while (true) {
-
                 int choice = sc.nextInt();
-
                 // =====================Navigate user based on choice=====================
                 switch (choice) {
-
                     case 1:
                         // ========Register a bus=========
                         busRegistration.register();
                         returnToMainMenu();
                         break;
-
                     case 2:
                         // ========View all buses=========
                         busRegistration.showBuses();
                         returnToMainMenu();
                         break;
-
                     case 3:
                         // ========Register a customer=========
                         if (CustomerRegistration()) {
@@ -56,19 +50,16 @@ class Main {
                             returnToMainMenu();
                         }
                         break;
-
                     case 4:
                         // ========View all customers=========
                         customerRegistration.display();
                         returnToMainMenu();
                         break;
-
                     case 5:
                         // ========Search buses=========
                         busRegistration.searchBus();
                         returnToMainMenu();
                         break;
-
                     case 6:
                         // ========Make a reservation=========
                         if (MakeReservation()) {
@@ -76,41 +67,34 @@ class Main {
                             returnToMainMenu();
                         }
                         break;
-
                     case 7:
                         // ========View all reservations=========
                         seatReservation.display();
                         returnToMainMenu();
                         break;
-
                     case 8:
                         // ========Change seat=========
                         seatReservation.changeSeat();
                         returnToMainMenu();
                         break;
-
                     case 9:
                         // ========Cancel reservation=========
                         seatReservation.dequeue();
                         returnToMainMenu();
                         break;
-
                     case 10:
                         System.out.println("=============Thank you for using Bus Reservation System=============");
                         System.exit(0);
                         break;
-
                     default:
                         System.out.println("==============================================");
                         System.out.println("Invalid Input! Please try again.");
                         System.out.println("==============================================\n");
+                        break;
                 }
-                // =====================End of Navigate user based on
-                // choice=====================
+                // =====================End of Navigate user based on choice=====================
             }
-
             // ==================End of Main Menu======================
-
             // ==================Exception Handling====================
         } catch (Exception e) {
             System.out.println("===============================");
@@ -120,7 +104,6 @@ class Main {
         }
         // ==================End of Exception Handling==================
     }
-
     // ===========Register a Customer method============================
     public static boolean CustomerRegistration() {
         System.out.println("=============Register a Customer=============");
@@ -134,7 +117,6 @@ class Main {
         String customerEmail = sc.next();
         System.out.println("Enter Customer City");
         String customerCity = sc.next();
-
         // ===========Register customer===================================
         Customer customer = new Customer();
         customer.setName(customerName);
@@ -157,7 +139,6 @@ class Main {
         int busNumber = sc.nextInt();
         System.out.println("Enter Seat Number");
         int seatNumber = sc.nextInt();
-
         // ===========Make a reservation==================================
         Reservation reservation = new Reservation();
         reservation.setEmail(customerEmail);

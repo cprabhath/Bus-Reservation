@@ -26,29 +26,33 @@ class CustomerRegistration {
     public Customer pop() {
         if (isEmpty()) {
             System.out.println("====================================");
-            System.out.println("Stack underflow");
+            System.out.println("Stack underflow. No customers to pop");
             System.out.println("====================================");
             return null;
         } else {
+            //==================Remove customer from stack================
             Customer customer = stack.remove(top);
             top--;
             return customer;
+            //==================End of remove customer from stack=========
         }
     }
     // ===========End of pop customer from stack====================
 
-    // ===========Peek customer from stack==========================
-    public Customer peek() {
+    // ===========Get customer from stack===========================
+    public Customer top(){
         if (isEmpty()) {
             System.out.println("====================================");
-            System.out.println("Stack underflow");
+            System.out.println("Stack underflow. No customers to pop");
             System.out.println("====================================");
             return null;
         } else {
-            return stack.get(stack.size() - 1);
+            //==================Get customer from stack================
+            return stack.get(top);
+            //==================End of get customer from stack=========
         }
     }
-    // ===========End of peek customer from stack===================
+    // ===========End of get customer from stack====================
 
     // ===========Check if stack is empty===========================
     public boolean isEmpty() {
