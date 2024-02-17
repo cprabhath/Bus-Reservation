@@ -21,31 +21,19 @@ public class Reservation {
     // ===========================End of Initialize Reservation object=======================
 
     // =========================Getter methods=========================
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email;}
 
-    public int getBusNumber() {
-        return busNumber;
-    }
+    public int getBusNumber() {return busNumber;}
 
-    public int getSeatNumbers() {
-        return seatNumbers;
-    }
+    public int getSeatNumbers() {return seatNumbers;}
     // =========================End of Getter methods==================
 
     // =========================Setter methods=========================
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) { this.email = email;}
 
-    public void setBusNumber(int busNumber) {
-        this.busNumber = busNumber;
-    }
+    public void setBusNumber(int busNumber) { this.busNumber = busNumber; }
 
-    public void setSeatNumbers(int seatNumbers) {
-        this.seatNumbers = seatNumbers;
-    }
+    public void setSeatNumbers(int seatNumbers) { this.seatNumbers = seatNumbers; }
     // =========================End of Setter methods==================
 
     // =========================toString=========================

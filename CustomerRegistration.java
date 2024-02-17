@@ -3,10 +3,12 @@ import Dto.Customer;
 
 class CustomerRegistration {
     private ArrayList<Customer> stack = new ArrayList<>();
-    private static CustomerRegistration instance;
     private int top = -1;
 
-    private CustomerRegistration() { }
+    private static CustomerRegistration instance;
+
+    private CustomerRegistration() {
+    }
 
     public static CustomerRegistration getInstance() {
         if (instance == null) {
@@ -30,26 +32,26 @@ class CustomerRegistration {
             System.out.println("====================================");
             return null;
         } else {
-            //==================Remove customer from stack================
+            // ==================Remove customer from stack================
             Customer customer = stack.remove(top);
             top--;
             return customer;
-            //==================End of remove customer from stack=========
+            // ==================End of remove customer from stack=========
         }
     }
     // ===========End of pop customer from stack====================
 
     // ===========Get customer from stack===========================
-    public Customer top(){
+    public Customer top() {
         if (isEmpty()) {
             System.out.println("====================================");
             System.out.println("Stack underflow. No customers to pop");
             System.out.println("====================================");
             return null;
         } else {
-            //==================Get customer from stack================
+            // ==================Get customer from stack================
             return stack.get(top);
-            //==================End of get customer from stack=========
+            // ==================End of get customer from stack=========
         }
     }
     // ===========End of get customer from stack====================
@@ -62,7 +64,7 @@ class CustomerRegistration {
 
     // ===========Display all customers=============================
     public void display() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             System.out.println("====================================");
             System.out.println("Stack is Empty: No customers to display");
             System.out.println("====================================");
@@ -77,4 +79,18 @@ class CustomerRegistration {
         }
     }
     // ===========End of display all customers======================
+
+    // ===========Search customer by email==========================
+    public Customer search(String email) {
+        if (isEmpty()) {
+            return null;
+        }
+
+        for (int i = top; i >= 0; i--) {
+            if (stack.get(i).getEmail().equals(email)) {
+                return stack.get(i);
+            }
+        }
+        return null;
+    }
 }

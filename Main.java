@@ -10,7 +10,9 @@ class Main {
 
     // ================Instances of classes=======================
     static CustomerRegistration customerRegistration = CustomerRegistration.getInstance();
+
     static SeatReservation seatReservation = SeatReservation.getInstance();
+
     static BusRegistraion busRegistration = BusRegistraion.getInstance();
     // ================End of instances of classes=================
 
@@ -79,7 +81,15 @@ class Main {
                         break;
                     case 9:
                         // ========Cancel reservation=========
-                        seatReservation.dequeue();
+                        if (cancelReservation()) {
+                            System.out.println("=====================================");
+                            System.out.println("Reservation cancelled successfully. Seat is now available for new reservation");
+                            System.out.println("=====================================");
+                        } else {
+                            System.out.println("=====================================");
+                            System.out.println("Reservation not found");
+                            System.out.println("=====================================");
+                        }
                         returnToMainMenu();
                         break;
                     case 10:
@@ -92,7 +102,8 @@ class Main {
                         System.out.println("==============================================\n");
                         break;
                 }
-                // =====================End of Navigate user based on choice=====================
+                // =====================End of Navigate user based on
+                // choice=====================
             }
             // ==================End of Main Menu======================
             // ==================Exception Handling====================
@@ -104,49 +115,75 @@ class Main {
         }
         // ==================End of Exception Handling==================
     }
+
     // ===========Register a Customer method============================
     public static boolean CustomerRegistration() {
-        System.out.println("=============Register a Customer=============");
-        System.out.println("Enter Customer Name");
-        String customerName = sc.next();
-        System.out.println("Enter Customer Age");
-        int customerAge = sc.nextInt();
-        System.out.println("Enter Customer Phone Number");
-        String customerPhoneNumber = sc.next();
-        System.out.println("Enter Customer Email");
-        String customerEmail = sc.next();
-        System.out.println("Enter Customer City");
-        String customerCity = sc.next();
-        // ===========Register customer===================================
-        Customer customer = new Customer();
-        customer.setName(customerName);
-        customer.setAge(customerAge);
-        customer.setMobile(customerPhoneNumber);
-        customer.setEmail(customerEmail);
-        customer.setCity(customerCity);
-        customerRegistration.push(customer);
-        return true;
+        try {
+            System.out.println("=============Register a Customer=============");
+            System.out.println("Enter Customer Name");
+            String customerName = sc.next();
+            System.out.println("Enter Customer Age");
+            int customerAge = sc.nextInt();
+            System.out.println("Enter Customer Phone Number");
+            String customerPhoneNumber = sc.next();
+            System.out.println("Enter Customer Email");
+            String customerEmail = sc.next();
+            System.out.println("Enter Customer City");
+            String customerCity = sc.next();
+            // ===========Register customer===================================
+            Customer customer = new Customer();
+            customer.setName(customerName);
+            customer.setAge(customerAge);
+            customer.setMobile(customerPhoneNumber);
+            customer.setEmail(customerEmail);
+            customer.setCity(customerCity);
+            customerRegistration.push(customer);
+            return true;
+            // ===========End of Register customer============================
+        } catch (Exception e) {
+            System.out.println("===============================");
+            System.out.println("Invalid Input");
+            System.out.println(e);
+            System.out.println("===============================");
+            return false;
+        }
         // ===========End of Register customer============================
     }
     // ===========End of Register a Customer method=======================
 
     // ===========Make a reservation method===============================
     public static boolean MakeReservation() {
-        System.out.println("=============Make a Reservation=============");
-        System.out.println("Enter Customer Email");
-        String customerEmail = sc.next();
-        System.out.println("Enter Bus Number");
-        int busNumber = sc.nextInt();
-        System.out.println("Enter Seat Number");
-        int seatNumber = sc.nextInt();
-        // ===========Make a reservation==================================
-        Reservation reservation = new Reservation();
-        reservation.setEmail(customerEmail);
-        reservation.setBusNumber(busNumber);
-        reservation.setSeatNumbers(seatNumber);
-        seatReservation.enqueue(reservation);
-        return true;
-        // ===========End of Make a reservation===========================
+        try {
+            System.out.println("=============Make a Reservation=============");
+            System.out.println("Enter Customer Email");
+            String customerEmail = sc.next();
+            System.out.println("Enter Bus Number");
+            int busNumber = sc.nextInt();
+            System.out.println("Enter Seat Number");
+            int seatNumber = sc.nextInt();
+
+            // ===========Check if customer is registered=====================
+            if (customerRegistration.search(customerEmail) == null) {
+                System.out.println("=====================================");
+                System.out.println("Customer not found. Please register first");
+                System.out.println("=====================================");
+                return false;
+            }
+            // ===========Make a reservation==================================
+            Reservation reservation = new Reservation();
+            reservation.setEmail(customerEmail);
+            reservation.setBusNumber(busNumber);
+            reservation.setSeatNumbers(seatNumber);
+            seatReservation.enqueue(reservation);
+            return true;
+            // ===========End of Make a reservation===========================
+        } catch (Exception e) {
+            System.out.println("===============================");
+            System.out.println("Invalid Input");
+            System.out.println(e);
+            System.out.println("===============================");
+            return false;
+        }
     }
     // ===========End of Make a reservation method========================
 
@@ -168,5 +205,20 @@ class Main {
         }
     }
     // ==================End of Return to Main Menu method==================
+
+    // ================Cancel Reservation method===========================
+    public static boolean cancelReservation() {
+        System.out.println("=============Cancel Reservation=============");
+        System.out.println("Enter your email");
+        String email = sc.next();
+        for (int i = 0; i < seatReservation.queue.size(); i++) {
+            if (seatReservation.queue.get(i).getEmail().equals(email)) {
+                seatReservation.queue.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    // ================End of Cancel Reservation method====================
 }
 // ================End of Main class======================================

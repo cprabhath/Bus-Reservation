@@ -9,7 +9,6 @@ class SeatReservation {
     private int capacity = 52;
 
     private SeatReservation() {
-        front = rear = 0;
     }
 
     public static SeatReservation getInstance() {
